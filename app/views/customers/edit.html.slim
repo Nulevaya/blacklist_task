@@ -1,0 +1,21 @@
+= simple_form_for @customer,
+  html: { class: 'form-horizontal inputs-sm input-form' } do |f|
+
+  h1.d-flex.justify-content-center Edit customer:
+
+  .input-group.mb-3.d-flex.justify-content-center
+    span class='input-group-text' Name
+    = f.input :name, required: true, label: false, input_html: { class: 'form-control' }
+
+  .input-group.mb-3.d-flex.justify-content-center
+    span class='input-group-text' Phone number
+    = f.input :phone_number, label: false, required: true, input_html: { class: 'form-control' }
+
+  .input-group.mb-3.d-flex.justify-content-center
+    span class='input-group-text' Description
+    = f.input :description, label: false, input_html: { class: 'form-control' }
+
+  .row
+    .col-sm-offset-3.d-flex.justify-content-center
+      = f.button :submit, class: 'btn btn-primary', value: 'Save'
+      = link_to 'Cancel', customers_path, class: 'btn btn-primary ml-2'

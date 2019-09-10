@@ -1,0 +1,27 @@
+html
+  head
+    title Customers
+  body
+  div
+    h1 Add to blacklist:
+    form.form-inline action='/blacklisted_customers/blacklist_by_phone' method='post' data-remote='false'
+      input.form-control.mr-sm-2 id='phone_number' name='phone_number' placeholder="Write a phone number"
+      input type='submit' value='Add!' class='btn btn-danger'
+      input name="authenticity_token" type="hidden" value=form_authenticity_token()
+  h1.d-flex.justify-content-center Blacklist:
+  table.table.table-hover
+    thead.thead-dark
+      tr
+        th ID
+        th Name
+        th Phone
+        th Description
+        th
+    -@customers.each do |customer|
+      tbody
+        tr
+          td =customer.id
+          td =customer.name
+          td =customer.phone_number
+          td =customer.description
+          td =link_to 'Unblacklist', unblacklist_blacklisted_customer_path(customer), class: 'btn btn-danger', method: :post

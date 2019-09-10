@@ -1,0 +1,24 @@
+html
+  head
+    title Customers
+  body
+  h1.d-flex.justify-content-center List of customers:
+  table.table.table-hover
+    thead.thead-dark
+      tr
+        th ID
+        th Name
+        th Phone
+        th Description
+        th
+    -@customers.each do |customer|
+      tbody
+        tr
+          td =customer.id
+          td =customer.name
+          td =customer.phone_number
+          td =customer.description
+          td 
+            .btn-group
+              =link_to 'Edit', edit_customer_path(customer), class: 'btn btn-warning'
+              =link_to 'Blacklist', blacklist_customer_path(customer), class: 'btn btn-danger', method: :post
